@@ -14,7 +14,9 @@
  */
 
 #ifndef COMMON_H
+
 #include "common.h"
+
 #endif
 
 /*
@@ -107,12 +109,14 @@ INTEGER CODING RULES:
  *   Unary integer operators: ~, -
  */
 int intSize() {
-  int intArray[10];
-  int *intPtr1;
-  int *intPtr2;
-  // Write code to compute size of an integer.
+    int intArray[10];
+    int *intPtr1;
+    int *intPtr2;
 
-  return 2;
+    *(intArray) = 5;
+    intPtr1 = &*(intArray);
+    int size = sizeof(*intPtr1);
+    return size;
 }
 
 /*
@@ -130,12 +134,14 @@ int intSize() {
  *   Unary integer operators: ~, -
  */
 int doubleSize() {
-  double doubArray[10];
-  double *doubPtr1;
-  double *doubPtr2;
-  // Write code to compute size of a double.
+    double doubArray[10];
+    double *doubPtr1;
+    double *doubPtr2;
 
-  return 2;
+    *doubArray = 5;
+    doubPtr1 = &*(doubArray);
+    int size = sizeof(*doubPtr1);
+    return size;
 }
 
 /*
@@ -153,12 +159,13 @@ int doubleSize() {
  *   Unary integer operators: ~, -
  */
 int pointerSize() {
-  double *ptrArray[10];
-  double **ptrPtr1;
-  double **ptrPtr2;
-  // Write code to compute size of a pointer.
+    double *ptrArray[10];
+    double **ptrPtr1;
+    double **ptrPtr2;
 
-  return 2;
+//  **ptrArray = 5.0;
+    ptrPtr1 = &*ptrArray;
+    return sizeof(ptrPtr1);
 }
 
 /*
@@ -177,7 +184,9 @@ int pointerSize() {
  *   Unary integer operators: ~, -
  */
 void swapInts(int *ptr1, int *ptr2) {
-  // Your code here
+    int temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
 }
 
 /*
@@ -196,12 +205,15 @@ void swapInts(int *ptr1, int *ptr2) {
  *   Unary integer operators: -
  */
 int changeValue() {
-  int intArray[10];
-  int *intPtr1 = intArray;
-  // Remember not to use constants greater than 255.
-  // Remember to use * to dereference. You cannot use '[<index>]' syntax.
+    int intArray[10];
+    int *intPtr1 = intArray;
+    // Remember not to use constants greater than 255.
+    // Remember to use * to dereference. You cannot use '[<index>]' syntax.
 
-  return intArray[5];
+    int ascii_45 = '-';
+    int ascii_50 = '2';
+    int int295 = *(intArray + 5) = ascii_50 * 5 + ascii_45;
+    return int295;
 }
 
 /*
@@ -222,8 +234,8 @@ int changeValue() {
  *   Unary integer operators: -
  */
 int withinSameBlock(int *ptr1, int *ptr2) {
-  // Your code here
-  return 2;
+    // Your code here
+    return 2;
 }
 
 /*
@@ -246,12 +258,12 @@ int withinSameBlock(int *ptr1, int *ptr2) {
  *   Unary integer operators: -
  */
 int withinArray(int *intArray, int size, int *ptr) {
-  // Your code here
-  return 2;
+    // Your code here
+    return 0;
 }
 
 /*
- * In C characters are are terminated by the null character ('\0')
+ * In C characters are terminated by the null character ('\0')
  * given a pointer to the start of the string return the length of this string.
  * (The null character is not counted as part of the string length.)
  *
@@ -268,8 +280,14 @@ int withinArray(int *intArray, int size, int *ptr) {
  *   Unary integer operators: ~, -
  */
 int stringLength(char *s) {
-  // Your code here
-  return 2;
+    int index = 0;
+    char lastChar = 'x';
+
+    while (lastChar != '\0') {
+        lastChar = *(s + index);
+        index++;
+    }
+    return index - 1;
 }
 
 /*
@@ -296,9 +314,9 @@ int stringLength(char *s) {
  *   Unary integer operators: ~, -
  */
 int endianExperiment(int *ptr) {
-  char *bytePtr;
-  // Your code here
-  return *ptr;
+    char *bytePtr;
+    // Your code here
+    return *ptr;
 }
 
 /**
@@ -356,20 +374,20 @@ of bounds!
  * Returns the index of the smallest element in int array arr with length len.
  */
 int smallest_idx(int *arr, int len) {
-  int i;
-  int smallest_i = 0;
-  int smallest = arr[0];
+    int i;
+    int smallest_i = 0;
+    int smallest = arr[0];
 
-  // TODO: implement me using a for loop.
+    // TODO: implement me using a for loop.
 
-  return smallest_i;
+    return smallest_i;
 }
 
 // This function will work, if you implement smallest_idx and swapInts.
 void selectionSort(int *arr, int len) {
-  int i, swap_idx;
-  for (i = 0; i < len; i++) {
-    swap_idx = i + smallest_idx(arr + i, len - i);
-    swapInts(arr + i, arr + swap_idx);
-  }
+    int i, swap_idx;
+    for (i = 0; i < len; i++) {
+        swap_idx = i + smallest_idx(arr + i, len - i);
+        swapInts(arr + i, arr + swap_idx);
+    }
 }
